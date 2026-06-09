@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khushi Patel — WordPress & Shopify Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d0d;
+    --surface: #141414;
+    --card: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.16);
+    --text: #f0f0f0;
+    --muted: #888;
+    --accent: #a78bfa;
+    --accent2: #7c3aed;
+    --accent-glow: rgba(167,139,250,0.15);
+    --tag-bg: rgba(167,139,250,0.1);
+    --tag-border: rgba(167,139,250,0.25);
+    --font: 'Inter', sans-serif;
+    --serif: 'Playfair Display', Georgia, serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,13,0.9);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(124,58,237,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--tag-border);
+    background: var(--tag-bg);
+    padding: 6px 16px;
+    border-radius: 100px;
+    display: inline-block;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.75;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  }
+  .btn {
+    padding: 0.75rem 1.75rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary {
+    background: var(--accent2);
+    border-color: var(--accent2);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #6d28d9; border-color: #6d28d9; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--border-hover);
+    color: var(--text);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    border-top: 1px solid var(--border);
+    padding-top: 2.5rem;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: #fff;
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* SECTION */
+  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    color: var(--muted); max-width: 480px; line-height: 1.7; margin-bottom: 3rem;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .skill-card {
+    background: var(--card);
+    padding: 1.5rem;
+    transition: background 0.2s;
+  }
+  .skill-card:hover { background: #1f1f1f; }
+  .skill-icon {
+    width: 40px; height: 40px;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+  .skill-name { font-weight: 500; margin-bottom: 4px; color: #fff; font-size: 14px; }
+  .skill-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* PROJECTS TABS */
+  .tabs {
+    display: flex; gap: 4px; margin-bottom: 2.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+    width: fit-content;
+  }
+  .tab {
+    padding: 8px 20px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--muted);
+    border: none;
+    background: none;
+  }
+  .tab.active { background: var(--accent2); color: #fff; }
+  .tab:hover:not(.active) { color: var(--text); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: all 0.25s;
+    display: flex; flex-direction: column;
+    gap: 12px;
+  }
+  .project-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+    background: #1f1f1f;
+  }
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .project-title { font-weight: 600; color: #fff; font-size: 15px; line-height: 1.3; }
+  .project-desc { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--accent);
+    border: 1px solid var(--tag-border);
+    padding: 6px 12px; border-radius: 6px;
+    background: var(--tag-bg);
+    transition: all 0.2s;
+    width: fit-content; margin-top: auto;
+  }
+  .project-link:hover { background: rgba(124,58,237,0.2); border-color: var(--accent); }
+  .project-tag {
+    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--tag-bg); color: var(--accent);
+    border: 1px solid var(--tag-border);
+    padding: 3px 10px; border-radius: 100px;
+  }
+  .hidden { display: none; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text { color: #c0c0c0; line-height: 1.8; font-size: 15px; }
+  .about-text p + p { margin-top: 1.25rem; }
+  .about-info { display: flex; flex-direction: column; gap: 1.25rem; }
+  .info-row { display: flex; flex-direction: column; gap: 4px; }
+  .info-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .info-value { font-size: 14px; color: #fff; font-weight: 500; }
+  .info-link { color: var(--accent); }
+
+  /* CONTACT */
+  .contact-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .contact-box::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 300px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+  .contact-box h2 { font-family: var(--serif); font-size: 2.25rem; color: #fff; margin-bottom: 0.75rem; }
+  .contact-box p { color: var(--muted); margin-bottom: 2rem; }
+  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-box { padding: 2rem 1.5rem; }
+    .tabs { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Khushi Patel</span>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-eyebrow">Open to new projects</span>
+  <h1>Web Designer &<br><span>Digital Creator</span></h1>
+  <p>WordPress & Shopify specialist crafting responsive, visually compelling websites. 1+ year building business sites and e-commerce stores that convert.</p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View Projects →</a>
+    <a href="mailto:Patelkhushi150922@gmail.com" class="btn btn-ghost">Get in touch</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">15+</span>
+      <span class="stat-label">Projects Delivered</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">1yr+</span>
+      <span class="stat-label">WordPress Experience</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">8mo</span>
+      <span class="stat-label">Shopify Experience</span>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-eyebrow">Expertise</p>
+  <h2 class="section-title">Skills & Tools</h2>
+  <p class="section-sub">Full-stack web design capabilities from concept to launch, including AI-powered solutions.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-name">WordPress Development</div>
+      <div class="skill-desc">Custom themes, plugins, and full site builds with advanced customization.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🛒</div>
+      <div class="skill-name">Shopify Design</div>
+      <div class="skill-desc">Theme customization, product layouts, and conversion-focused store UI.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">Elementor & Elementor Pro</div>
+      <div class="skill-desc">Pixel-perfect page building with custom widgets and dynamic content.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🧩</div>
+      <div class="skill-name">Advanced Custom Fields</div>
+      <div class="skill-desc">Complex data structures and custom post types for business websites.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">💻</div>
+      <div class="skill-name">HTML / CSS / PHP</div>
+      <div class="skill-desc">Clean, semantic code for custom layouts and theme modifications.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">AI Website Development</div>
+      <div class="skill-desc">Claude (Anthropic) powered interactive and intelligent web solutions.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📱</div>
+      <div class="skill-name">Responsive Design</div>
+      <div class="skill-desc">Mobile-first layouts that look great on every device and screen size.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-name">UI / UX Design</div>
+      <div class="skill-desc">User-friendly interfaces with modern aesthetics and clear visual hierarchy.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-eyebrow">Portfolio</p>
+  <h2 class="section-title">Projects</h2>
+  <p class="section-sub">A selection of WordPress, Shopify, and AI-powered websites delivered for clients.</p>
+
+  <div class="tabs">
+    <button class="tab active" onclick="filterProjects('all', this)">All</button>
+    <button class="tab" onclick="filterProjects('wordpress', this)">WordPress</button>
+    <button class="tab" onclick="filterProjects('shopify', this)">Shopify</button>
+    <button class="tab" onclick="filterProjects('ai', this)">AI-Powered</button>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- WORDPRESS -->
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">Threo Media</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Modern media & creative agency website with bold layout and service showcasing.</div>
+      <a class="project-link" href="https://threo.media/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">Nityam Global</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Business website highlighting company services and corporate solutions with professional layout.</div>
+      <a class="project-link" href="https://nityamglobal.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">The Hendrix Hou</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Elegant real estate website presenting property listings with strong visual appeal.</div>
+      <a class="project-link" href="https://thehendrixhou.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">Sparco Spanlite</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Product-focused industrial website with clean sections and technical service presentation.</div>
+      <a class="project-link" href="https://sparcospanlite.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">Homes by Gagan</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Property listing website with large visuals, featured homes, and lead generation sections.</div>
+      <a class="project-link" href="https://homesbygagan.ca/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">Last Mile Hub</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Modern logistics platform focused on fulfillment and marketplace integration.</div>
+      <a class="project-link" href="https://lastmilehub.in/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">Sahyog Designway</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Interior design studio website with portfolio showcase and service sections.</div>
+      <a class="project-link" href="https://sahyogdesignway.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">Pelican (Felix Phase)</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Clean business website with structured service offerings and modern UI.</div>
+      <a class="project-link" href="https://pelican.felixphase.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">Mars Souq</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Global trading website presenting business services and distribution solutions.</div>
+      <a class="project-link" href="https://marssouq.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">GetWorkz</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Job platform website with clear service sections and professional layout.</div>
+      <a class="project-link" href="https://getworkz.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="wordpress">
+      <div class="project-header">
+        <div class="project-title">Bite Delight</div>
+        <span class="project-tag">WordPress</span>
+      </div>
+      <div class="project-desc">Food & restaurant website with appealing product sections and ordering focus.</div>
+      <a class="project-link" href="https://bitedelight.in/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <!-- SHOPIFY -->
+    <div class="project-card" data-type="shopify">
+      <div class="project-header">
+        <div class="project-title">Khuvi</div>
+        <span class="project-tag">Shopify</span>
+      </div>
+      <div class="project-desc">Modern Shopify store showcasing product collections, promotional banners, and clean product layouts.</div>
+      <a class="project-link" href="https://khuvi.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="shopify">
+      <div class="project-header">
+        <div class="project-title">Najaranu</div>
+        <span class="project-tag">Shopify</span>
+      </div>
+      <div class="project-desc">Premium Shopify website showcasing handcrafted art, gifting products, and decorative frames.</div>
+      <a class="project-link" href="https://najaranu.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="shopify">
+      <div class="project-header">
+        <div class="project-title">Pawganix</div>
+        <span class="project-tag">Shopify</span>
+      </div>
+      <div class="project-desc">Pet care e-commerce store with product highlights, brand story, and clean shopping experience.</div>
+      <a class="project-link" href="https://pawganix.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="shopify">
+      <div class="project-header">
+        <div class="project-title">Kansyam</div>
+        <span class="project-tag">Shopify</span>
+      </div>
+      <div class="project-desc">Minimal premium e-commerce website highlighting traditional bronze kitchenware collections.</div>
+      <a class="project-link" href="https://kansyam.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <!-- AI -->
+    <div class="project-card" data-type="ai">
+      <div class="project-header">
+        <div class="project-title">Prosight Financial Group</div>
+        <span class="project-tag">AI-Powered</span>
+      </div>
+      <div class="project-desc">Financial advisory website with AI-powered interactive features and professional layout.</div>
+      <a class="project-link" href="https://prosightfinancialgroup.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+    <div class="project-card" data-type="ai">
+      <div class="project-header">
+        <div class="project-title">Hire Workz</div>
+        <span class="project-tag">AI-Powered</span>
+      </div>
+      <div class="project-desc">Smart hiring platform website integrating AI capabilities for recruitment services.</div>
+      <a class="project-link" href="https://hireworkz.com/" target="_blank" rel="noopener">Visit Site ↗</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-eyebrow">About me</p>
+  <h2 class="section-title">Creative Designer,<br>Problem Solver</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a creative web designer based in India with a passion for building websites that are both beautiful and functional. With 1+ year in WordPress and 8 months in Shopify, I've delivered 15+ projects across industries — from real estate and logistics to food and finance.</p>
+      <p>I specialize in turning ideas into polished digital experiences using Elementor, ACF, and custom HTML/CSS/PHP. I'm also experienced in building AI-powered websites using Claude by Anthropic — bringing intelligent interactivity to business clients.</p>
+      <p>Currently available for freelance projects. I love working with clients who care about design details as much as I do.</p>
+    </div>
+    <div class="about-info">
+      <div class="info-row">
+        <span class="info-label">Email</span>
+        <a href="mailto:Patelkhushi150922@gmail.com" class="info-value info-link">Patelkhushi150922@gmail.com</a>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Phone</span>
+        <span class="info-value">+91 6351666594</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">LinkedIn</span>
+        <a href="https://linkedin.com/in/khushi-patelb167562ab" class="info-value info-link" target="_blank">linkedin.com/in/khushi-patelb167562ab</a>
+      </div>
+      <div class="info-row">
+        <span class="info-label">GitHub</span>
+        <a href="https://github.com/patelkhushi150922-cpu/Portfolio" class="info-value info-link" target="_blank">github.com/patelkhushi150922-cpu</a>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Education</span>
+        <span class="info-value">Bachelor of Computer Applications (BCA)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Location</span>
+        <span class="info-value">India</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box">
+    <h2>Let's build something great</h2>
+    <p>Have a project in mind? I'd love to hear about it.</p>
+    <div class="contact-links">
+      <a href="mailto:Patelkhushi150922@gmail.com" class="btn btn-primary">Send an Email →</a>
+      <a href="https://linkedin.com/in/khushi-patelb167562ab" class="btn btn-ghost" target="_blank">LinkedIn ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Khushi Patel · WordPress & Shopify Designer · Built with care</p>
+</footer>
+
+<script>
+function filterProjects(type, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.project-card').forEach(card => {
+    if (type === 'all' || card.dataset.type === type) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+</script>
+
+</body>
+</html>
