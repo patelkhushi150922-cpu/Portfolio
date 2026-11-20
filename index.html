@@ -3,843 +3,403 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Khushi Patel — WordPress & Shopify Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<title>Khushi Patel – WordPress & Shopify Designer</title>
+<meta name="description" content="Freelance WordPress and Shopify web designer in Ahmedabad, India.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{color-scheme:dark;--bg:#0a0e16;--soft:#0e1420;--card:#131a28;--text:#e8ecf4;--muted:#93a0b6;--line:#222c3f;--blue:#6ea0ff;--btn:#2f6fed;--btn-dark:#2560d6;--violet:#8b7bff;--tint:rgba(110,160,255,.12)}
+html{scroll-behavior:smooth}
+body{font:400 16px/1.65 'Inter',system-ui,sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid #93b4ff;outline-offset:2px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{line-height:1.15;letter-spacing:-.025em;font-weight:700}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--btn),var(--violet));z-index:300}
 
-  :root {
-    --bg: #080810;
-    --surface: #0f0f18;
-    --card: #12121c;
-    --card-hover: #161622;
-    --border: rgba(255,255,255,0.07);
-    --border-hover: rgba(167,139,250,0.3);
-    --text: #e8e8f0;
-    --muted: #7a7a90;
-    --accent: #a78bfa;
-    --accent2: #7c3aed;
-    --accent3: #6d28d9;
-    --tag-bg: rgba(167,139,250,0.08);
-    --tag-border: rgba(167,139,250,0.2);
-    --font: 'Inter', sans-serif;
-    --serif: 'Playfair Display', Georgia, serif;
-  }
+/* nav */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,border-color .3s,box-shadow .3s;border-bottom:1px solid transparent}
+header.nav.sc{background:rgba(10,14,22,.85);backdrop-filter:blur(12px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-weight:800;font-size:1.1rem;display:flex;align-items:center;gap:.6rem}
+.brand i{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--btn),var(--violet));display:grid;place-items:center;font-style:normal;font-size:14px;color:#fff}
+.nav ul{display:flex;gap:.3rem;list-style:none;align-items:center}
+.nav ul a{font-size:14px;font-weight:500;color:var(--muted);padding:.45rem .9rem;border-radius:8px;transition:color .2s,background .2s}
+.nav ul a:hover,.nav ul a.act{color:var(--text);background:rgba(255,255,255,.06)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.6rem;border-radius:10px;font-weight:600;font-size:15px;border:1px solid transparent;transition:background .25s,transform .25s,border-color .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-p{background:var(--btn);color:#fff;box-shadow:0 8px 24px rgba(47,111,237,.35)}
+.btn-p:hover{background:var(--btn-dark);box-shadow:0 12px 30px rgba(47,111,237,.5)}
+.btn-o{border-color:var(--line);color:var(--text);background:var(--card)}
+.btn-o:hover{border-color:var(--blue);color:var(--blue)}
+.nav ul a.btn{padding:.5rem 1.1rem;font-size:14px;color:#fff;background:var(--btn);margin-left:.5rem}
+.nav ul a.btn:hover{background:var(--btn-dark)}
 
-  html { scroll-behavior: smooth; }
+/* hero */
+.hero{position:relative;padding:11rem 0 6rem;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.35;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 70%)}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.38;pointer-events:none}
+.o1{width:420px;height:420px;background:var(--btn);top:-80px;left:-80px;animation:drift 16s ease-in-out infinite}
+.o2{width:380px;height:380px;background:var(--violet);top:120px;right:-60px;animation:drift 20s -6s ease-in-out infinite reverse}
+@keyframes drift{50%{transform:translate(60px,50px) scale(1.15)}}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:500;color:var(--blue);background:var(--tint);border:1px solid rgba(110,160,255,.25);padding:6px 14px;border-radius:100px;margin-bottom:1.5rem}
+.tag::before{content:'';width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4rem);font-weight:800;margin-bottom:1.3rem}
+.grad{background:linear-gradient(90deg,var(--blue),var(--violet),var(--blue));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.rot{display:inline-block;height:1.15em;overflow:hidden;vertical-align:bottom}
+.rot span{display:block;animation:rot 9s infinite}
+@keyframes rot{0%,28%{transform:translateY(0)}33%,61%{transform:translateY(-1.15em)}66%,95%{transform:translateY(-2.3em)}100%{transform:translateY(-3.45em)}}
+.hero p.lead{color:var(--muted);font-size:1.1rem;max-width:500px;margin-bottom:2rem}
+.actions{display:flex;gap:.8rem;flex-wrap:wrap}
+.mini{display:flex;gap:2rem;margin-top:2.8rem;padding-top:1.8rem;border-top:1px solid var(--line);flex-wrap:wrap}
+.mini b{font-size:1.9rem;font-weight:800;display:block;line-height:1.1;letter-spacing:-.03em}
+.mini span{font-size:13.5px;color:var(--muted)}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font);
-    font-size: 15px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
+/* hero visual */
+.vis{position:relative;height:440px;perspective:1000px}
+.shot{position:absolute;width:300px;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.55);transition:transform .2s ease-out}
+.shot .bar{display:flex;gap:5px;padding:9px 11px;background:#0f1522;border-bottom:1px solid var(--line)}
+.shot .bar i{width:8px;height:8px;border-radius:50%;background:#34415a}
+.shot .im{height:170px;background:linear-gradient(135deg,#1b2740,#14203a);position:relative;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.s1{top:0;left:6%;animation:fl 7s ease-in-out infinite}
+.s2{top:130px;right:0;animation:fl 8s -3s ease-in-out infinite;width:280px}
+.s3{bottom:0;left:16%;animation:fl 9s -5s ease-in-out infinite;width:270px}
+@keyframes fl{50%{translate:0 -14px}}
 
-  a { color: inherit; text-decoration: none; }
+/* marquee */
+.marq{border-block:1px solid var(--line);background:var(--soft);overflow:hidden;white-space:nowrap;padding:1rem 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.tr{display:inline-flex;animation:mq 30s linear infinite}
+.tr span{padding:0 2rem;font-weight:600;color:var(--muted);font-size:15px;display:inline-flex;align-items:center;gap:2rem}
+.tr span::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--btn)}
+@keyframes mq{to{transform:translateX(-50%)}}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 1rem 3rem;
-    display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid var(--border);
-    background: rgba(8,8,16,0.92);
-    backdrop-filter: blur(20px);
-  }
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.2rem;
-    color: #fff;
-    letter-spacing: -0.01em;
-  }
-  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
-  .nav-links a {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta {
-    padding: 7px 18px;
-    background: var(--accent2);
-    color: #fff !important;
-    border-radius: 6px;
-    font-size: 12px !important;
-    letter-spacing: 0.04em !important;
-    transition: background 0.2s !important;
-  }
-  .nav-cta:hover { background: var(--accent3) !important; color: #fff !important; }
+/* intro load */
+.fade{opacity:0;transform:translateY(18px);animation:up .8s cubic-bezier(.2,.8,.2,1) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.22s}.d3{animation-delay:.36s}.d4{animation-delay:.5s}.d5{animation-delay:.65s}
+@keyframes up{to{opacity:1;transform:none}}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 8rem 2rem 5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -10%; left: 50%; transform: translateX(-50%);
-    width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(124,58,237,0.09) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
-  }
-  .hero-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    border: 1px solid var(--tag-border);
-    background: var(--tag-bg);
-    padding: 7px 20px;
-    border-radius: 100px;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    display: inline-block;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: #fff;
-    margin-bottom: 1.75rem;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-  .hero-sub {
-    font-size: 1rem;
-    color: var(--muted);
-    max-width: 500px;
-    margin: 0 auto 1rem;
-    line-height: 1.8;
-  }
-  .hero-location {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 13px; color: var(--muted);
-    margin-bottom: 2.5rem;
-  }
-  .hero-location svg { width: 14px; height: 14px; opacity: 0.6; }
-  .hero-cta {
-    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
-    margin-bottom: 5rem;
-  }
-  .btn {
-    padding: 0.8rem 2rem;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    border: 1px solid;
-    display: inline-flex; align-items: center; gap: 8px;
-    letter-spacing: 0.01em;
-  }
-  .btn-primary {
-    background: var(--accent2);
-    border-color: var(--accent2);
-    color: #fff;
-  }
-  .btn-primary:hover { background: var(--accent3); border-color: var(--accent3); transform: translateY(-1px); }
-  .btn-ghost {
-    background: transparent;
-    border-color: var(--border-hover);
-    color: var(--text);
-  }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+/* sections */
+section{padding:6rem 0}
+section.alt{background:var(--soft);border-block:1px solid var(--line)}
+.head{max-width:580px;margin-bottom:3rem}
+.head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);margin-bottom:.7rem}
+.head p{color:var(--muted)}
+.label{font-size:13.5px;font-weight:600;color:var(--blue);margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem}
+.label::before{content:'';width:22px;height:2px;background:var(--blue);border-radius:2px}
 
-  .hero-stats {
-    display: flex; gap: 0;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    overflow: hidden;
-    background: var(--surface);
-  }
-  .stat {
-    text-align: center;
-    padding: 1.5rem 3rem;
-    border-right: 1px solid var(--border);
-  }
-  .stat:last-child { border-right: none; }
-  .stat-num {
-    font-family: var(--serif);
-    font-size: 2rem;
-    color: #fff;
-    display: block;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+.skill{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.6rem;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.skill::before,.card::before{content:'';position:absolute;inset:0;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(110,160,255,.14),transparent 55%);opacity:0;transition:opacity .3s;pointer-events:none;z-index:2}
+.skill:hover::before,.card:hover::before{opacity:1}
+.skill:hover{transform:translateY(-5px);border-color:#34528f;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.ic{width:44px;height:44px;border-radius:11px;background:var(--tint);border:1px solid rgba(110,160,255,.22);color:var(--blue);display:grid;place-items:center;margin-bottom:1.1rem;transition:transform .4s cubic-bezier(.3,1.6,.5,1),background .3s,color .3s}
+.skill:hover .ic{transform:rotate(-8deg) scale(1.1);background:var(--btn);color:#fff}
+.ic svg{width:21px;height:21px}
+.skill h3{font-size:1.02rem;margin-bottom:.4rem}
+.skill p{color:var(--muted);font-size:14px;line-height:1.6}
 
-  /* SECTION */
-  section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
-  .section-label {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  .section-label::before {
-    content: '';
-    width: 20px; height: 1px;
-    background: var(--accent);
-    display: inline-block;
-  }
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: #fff;
-    margin-bottom: 1rem;
-  }
-  .section-sub {
-    color: var(--muted); max-width: 480px; line-height: 1.75; margin-bottom: 3.5rem;
-    font-size: 15px;
-  }
+/* projects */
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.2rem}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:.55rem 1.2rem;border-radius:100px;font:500 14px 'Inter',sans-serif;cursor:pointer;transition:all .25s}
+.tab:hover{border-color:var(--blue);color:var(--blue)}
+.tab.on{background:var(--btn);border-color:var(--btn);color:#fff;box-shadow:0 6px 18px rgba(47,111,237,.35)}
+.tab em{font-style:normal;opacity:.65;margin-left:.35rem;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.5rem}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s}
+.card:hover{transform:translateY(-6px);border-color:#34528f;box-shadow:0 22px 50px rgba(0,0,0,.55)}
+.card.out{display:none}
+.card.show{animation:up .55s cubic-bezier(.2,.8,.2,1) both}
+.thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(110deg,#172036 30%,#1d2944 50%,#172036 70%);background-size:200% 100%;animation:sk 1.6s linear infinite;border-bottom:1px solid var(--line)}
+@keyframes sk{to{background-position:-200% 0}}
+.thumb.ok{animation:none;background:#0f1522}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;opacity:0;transform:scale(1.001);transition:opacity .6s,transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.thumb.ok img{opacity:1}
+.card:hover .thumb img{transform:scale(1.07)}
+.thumb .fb{position:absolute;inset:0;display:none;place-items:center;font-size:3.2rem;font-weight:800;color:var(--blue);background:linear-gradient(135deg,#182341,#101830)}
+.thumb.bad{animation:none}.thumb.bad .fb{display:grid}
+.ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,14,22,.85));opacity:0;transition:opacity .35s;display:flex;align-items:flex-end;justify-content:center;padding:1rem}
+.card:hover .ov{opacity:1}
+.ov span{background:#fff;color:#0a0e16;font-weight:600;font-size:13px;padding:.5rem 1rem;border-radius:100px;transform:translateY(12px);transition:transform .35s}
+.card:hover .ov span{transform:none}
+.cb{padding:1.3rem 1.4rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.top{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.pill{font-size:12px;font-weight:600;color:var(--blue);background:var(--tint);border:1px solid rgba(110,160,255,.22);padding:3px 11px;border-radius:100px}
+.pill.s{color:#5eead4;background:rgba(94,234,212,.1);border-color:rgba(94,234,212,.25)}
+.pill.a{color:#c4b5fd;background:rgba(139,123,255,.12);border-color:rgba(139,123,255,.3)}
+.dom{font-size:12.5px;color:var(--muted)}
+.card h3{font-size:1.15rem;margin-top:.2rem}
+.card p{color:var(--muted);font-size:14px;flex:1}
+.go{margin-top:.5rem;color:var(--blue);font-weight:600;font-size:14px;width:fit-content;display:inline-flex;gap:.4rem;align-items:center}
+.go svg{width:15px;height:15px;transition:transform .25s}
+.card:hover .go svg{transform:translateX(5px)}
+.card a.cover{position:absolute;inset:0;z-index:3}
 
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .skill-card {
-    background: var(--card);
-    padding: 1.75rem;
-    transition: background 0.2s;
-  }
-  .skill-card:hover { background: var(--card-hover); }
-  .skill-icon {
-    width: 42px; height: 42px;
-    background: var(--tag-bg);
-    border: 1px solid var(--tag-border);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1rem;
-    font-size: 19px;
-  }
-  .skill-name { font-weight: 600; margin-bottom: 6px; color: #fff; font-size: 14px; }
-  .skill-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+/* about */
+.about{display:grid;grid-template-columns:1.15fr .85fr;gap:4rem;align-items:start}
+.about h2{font-size:clamp(1.9rem,3.6vw,2.6rem);margin-bottom:1.3rem}
+.about p{color:var(--muted);max-width:570px}.about p+p{margin-top:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
+.tags span{font-size:13px;font-weight:500;padding:.4rem .9rem;border:1px solid var(--line);border-radius:100px;background:var(--card);color:var(--muted);transition:all .25s}
+.tags span:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.info{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.info div{display:flex;gap:1rem;padding:1.05rem 1.5rem;border-bottom:1px solid var(--line);font-size:14px;transition:background .25s}
+.info div:hover{background:rgba(255,255,255,.03)}
+.info div:last-child{border:none}
+.info small{min-width:82px;color:var(--muted);font-weight:500}
+.info a{color:var(--blue);word-break:break-all}.info a:hover{text-decoration:underline}
 
-  /* PROJECTS */
-  .tabs {
-    display: flex; gap: 4px; margin-bottom: 2.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 4px;
-    width: fit-content;
-  }
-  .tab {
-    padding: 8px 22px;
-    border-radius: 7px;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    color: var(--muted);
-    border: none;
-    background: none;
-    letter-spacing: 0.02em;
-  }
-  .tab.active { background: var(--accent2); color: #fff; }
-  .tab:hover:not(.active) { color: var(--text); }
+/* contact */
+.cta{position:relative;overflow:hidden;background:linear-gradient(135deg,#1b46c0,#2f6fed 55%,#6a5cf0);border-radius:22px;padding:4.2rem 2rem;text-align:center}
+.cta::before{content:'';position:absolute;inset:-50%;background:conic-gradient(from 0deg,transparent,rgba(255,255,255,.14),transparent 25%);animation:sp 12s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.cta>*{position:relative}
+.cta h2{font-size:clamp(1.8rem,3.8vw,2.6rem);margin-bottom:.7rem;color:#fff}
+.cta p{color:rgba(255,255,255,.85);margin-bottom:2rem}
+.cta .actions{justify-content:center}
+.cta .btn-w{background:#fff;color:#1b46c0}.cta .btn-w:hover{background:#e6eeff}
+.cta .btn-l{border-color:rgba(255,255,255,.55);color:#fff}.cta .btn-l:hover{background:rgba(255,255,255,.14);border-color:#fff}
+footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+footer a:hover{color:var(--blue)}
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-    gap: 1.25rem;
-  }
-  .project-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.5rem;
-    transition: all 0.25s;
-    display: flex; flex-direction: column;
-    gap: 10px;
-  }
-  .project-card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-3px);
-    background: var(--card-hover);
-    box-shadow: 0 8px 30px rgba(124,58,237,0.08);
-  }
-  .project-top {
-    display: flex; align-items: center; justify-content: space-between; gap: 8px;
-    margin-bottom: 2px;
-  }
-  .project-icon {
-    width: 38px; height: 38px;
-    background: var(--tag-bg);
-    border: 1px solid var(--tag-border);
-    border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 17px;
-    flex-shrink: 0;
-  }
-  .project-tag {
-    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
-    background: var(--tag-bg); color: var(--accent);
-    border: 1px solid var(--tag-border);
-    padding: 4px 10px; border-radius: 100px;
-    font-weight: 600;
-  }
-  .project-title { font-weight: 600; color: #fff; font-size: 15px; line-height: 1.3; }
-  .project-desc { font-size: 13px; color: var(--muted); line-height: 1.65; flex: 1; }
-  .project-footer {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-top: 4px; padding-top: 12px;
-    border-top: 1px solid var(--border);
-  }
-  .project-link {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 12px; color: var(--accent);
-    font-weight: 500;
-    transition: gap 0.2s;
-  }
-  .project-link:hover { gap: 8px; }
-  .project-domain {
-    font-size: 11px; color: var(--muted);
-    font-family: 'SF Mono', 'Fira Code', monospace;
-    letter-spacing: -0.02em;
-  }
-  .hidden { display: none; }
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
 
-  /* ABOUT */
-  .about-wrapper {
-    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: start;
-  }
-  .about-text { color: #b8b8cc; line-height: 1.85; font-size: 15px; }
-  .about-text p + p { margin-top: 1.25rem; }
-  .about-text strong { color: #fff; font-weight: 600; }
-  .about-info {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .info-row {
-    display: flex; align-items: flex-start;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    gap: 1rem;
-  }
-  .info-row:last-child { border-bottom: none; }
-  .info-label {
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
-    color: var(--muted); font-weight: 600; min-width: 90px; padding-top: 1px;
-  }
-  .info-value { font-size: 13.5px; color: var(--text); font-weight: 400; line-height: 1.5; }
-  .info-link { color: var(--accent); }
-  .info-link:hover { text-decoration: underline; }
-
-  /* CONTACT */
-  .contact-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 4rem 3rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .contact-box::before {
-    content: '';
-    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-    width: 400px; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent);
-  }
-  .contact-box::after {
-    content: '';
-    position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .contact-box h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    color: #fff; margin-bottom: 0.75rem;
-    position: relative; z-index: 1;
-  }
-  .contact-box p { color: var(--muted); margin-bottom: 2.5rem; position: relative; z-index: 1; }
-  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 3rem;
-    display: flex; align-items: center; justify-content: space-between;
-    color: var(--muted);
-    font-size: 13px;
-  }
-  .footer-right { display: flex; gap: 1.5rem; }
-  .footer-right a { color: var(--muted); transition: color 0.2s; }
-  .footer-right a:hover { color: var(--accent); }
-
-  /* DIVIDER */
-  .section-divider {
-    max-width: 1100px; margin: 0 auto;
-    height: 1px; background: var(--border);
-  }
-
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero-stats { flex-direction: column; gap: 0; border-radius: 14px; }
-    .stat { border-right: none; border-bottom: 1px solid var(--border); }
-    .stat:last-child { border-bottom: none; }
-    .about-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
-    .contact-box { padding: 2.5rem 1.5rem; }
-    .tabs { flex-wrap: wrap; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
-  }
+@media(max-width:900px){
+  .hero{padding:8rem 0 4rem}
+  .hero .wrap,.about{grid-template-columns:1fr;gap:3rem}
+  .vis{height:360px}.shot{width:240px!important}.shot .im{height:130px}
+  .nav ul li:not(:last-child){display:none}
+  section{padding:4rem 0}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .fade,.rv{opacity:1;transform:none}
+  .thumb img{opacity:1}
+}
 </style>
 </head>
 <body>
+<div id="prog"></div>
 
-<nav>
-  <span class="nav-logo">Khushi Patel</span>
-  <div class="nav-links">
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="mailto:Patelkhushi150922@gmail.com" class="nav-cta">Hire Me</a>
-  </div>
-</nav>
+<header class="nav" id="nav"><div class="wrap">
+  <a class="brand" href="#top"><i>K</i>Khushi Patel</a>
+  <ul>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a class="btn" href="mailto:Patelkhushi150922@gmail.com">Hire me</a></li>
+  </ul>
+</div></header>
 
-<!-- HERO -->
+<main id="top">
 <div class="hero">
-  <span class="hero-eyebrow">Available for freelance projects</span>
-  <h1>WordPress & Shopify<br><em>Web Designer</em></h1>
-  <p class="hero-sub">Crafting responsive, conversion-focused websites for businesses. 1+ year of experience delivering polished digital experiences.</p>
-  <div class="hero-location">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-    Ahmedabad, Gujarat, India
-  </div>
-  <div class="hero-cta">
-    <a href="#projects" class="btn btn-primary">View My Work →</a>
-    <a href="mailto:Patelkhushi150922@gmail.com" class="btn btn-ghost">Get in Touch</a>
-  </div>
-  <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-num">15+</span>
-      <span class="stat-label">Projects Delivered</span>
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="wrap">
+    <div>
+      <span class="tag fade d1">Available for freelance projects</span>
+      <h1 class="fade d2">I design <span class="grad">websites</span> that help businesses grow.</h1>
+      <p class="lead fade d3">WordPress and Shopify web designer in Ahmedabad, India. I build fast, responsive
+        <span class="rot"><span style="color:var(--text);font-weight:600">WordPress<br>Shopify<br>AI-powered<br>WordPress</span></span> websites.</p>
+      <div class="actions fade d4">
+        <a class="btn btn-p" href="#projects">View projects</a>
+        <a class="btn btn-o" href="mailto:Patelkhushi150922@gmail.com">Contact me</a>
+      </div>
+      <div class="mini fade d5">
+        <div><b data-n="19">0</b><span>Websites delivered</span></div>
+        <div><b data-n="1" data-s="+ yr">0</b><span>WordPress</span></div>
+        <div><b data-n="8" data-s=" mo">0</b><span>Shopify</span></div>
+      </div>
     </div>
-    <div class="stat">
-      <span class="stat-num">1yr+</span>
-      <span class="stat-label">WordPress</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">8mo</span>
-      <span class="stat-label">Shopify</span>
-    </div>
+    <div class="vis fade d3" id="vis" aria-hidden="true"></div>
   </div>
 </div>
 
-<div class="section-divider"></div>
+<div class="marq" aria-hidden="true"><div class="tr" id="tr"></div></div>
 
-<!-- SKILLS -->
-<section id="skills">
-  <p class="section-label">Expertise</p>
-  <h2 class="section-title">Skills & Tools</h2>
-  <p class="section-sub">End-to-end web design capabilities — from wireframe to launch, including AI-powered solutions.</p>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-icon">🌐</div>
-      <div class="skill-name">WordPress Development</div>
-      <div class="skill-desc">Custom themes, plugins, and full site builds with advanced customization.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🛒</div>
-      <div class="skill-name">Shopify Design</div>
-      <div class="skill-desc">Theme customization, product layouts, and conversion-focused store UI.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">⚡</div>
-      <div class="skill-name">Elementor & Elementor Pro</div>
-      <div class="skill-desc">Pixel-perfect page building with custom widgets and dynamic content.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🧩</div>
-      <div class="skill-name">Advanced Custom Fields</div>
-      <div class="skill-desc">Complex data structures and custom post types for business websites.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">💻</div>
-      <div class="skill-name">HTML / CSS / PHP</div>
-      <div class="skill-desc">Clean, semantic code for custom layouts and theme modifications.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🤖</div>
-      <div class="skill-name">AI Website Development</div>
-      <div class="skill-desc">Claude (Anthropic) powered interactive and intelligent web solutions.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">📱</div>
-      <div class="skill-name">Responsive Design</div>
-      <div class="skill-desc">Mobile-first layouts that look great on every device and screen size.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🎨</div>
-      <div class="skill-name">UI / UX Design</div>
-      <div class="skill-desc">User-friendly interfaces with modern aesthetics and clear visual hierarchy.</div>
+<section id="skills"><div class="wrap">
+  <div class="head rv"><span class="label">Skills</span><h2>What I work with</h2><p>From layout design to launch, including AI-powered features.</p></div>
+  <div class="skills" id="skills-grid"></div>
+</div></section>
+
+<section class="alt" id="projects"><div class="wrap">
+  <div class="head rv"><span class="label">Projects</span><h2>Recent websites</h2><p>WordPress, Shopify and AI-powered sites built for real clients. Click any project to open the live site.</p></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="about"><div class="wrap about">
+  <div class="rv">
+    <span class="label">About</span>
+    <h2>Web designer based in Ahmedabad</h2>
+    <p>I have over a year of experience with WordPress and eight months with Shopify. I've built websites for real estate, logistics, food, fashion, finance and more.</p>
+    <p>I work with Elementor, Advanced Custom Fields, and custom HTML, CSS and PHP. I also build AI-powered features using Claude by Anthropic.</p>
+    <div class="tags"><span>Elementor</span><span>ACF</span><span>PHP</span><span>Responsive</span><span>UI / UX</span><span>AI</span></div>
+  </div>
+  <div class="info rv">
+    <div><small>Email</small><a href="mailto:Patelkhushi150922@gmail.com">Patelkhushi150922@gmail.com</a></div>
+    <div><small>Phone</small><a href="tel:+916351666594">+91 63516 66594</a></div>
+    <div><small>Location</small>Ahmedabad, Gujarat, India</div>
+    <div><small>Education</small>Bachelor of Computer Applications</div>
+    <div><small>LinkedIn</small><a href="https://linkedin.com/in/khushi-patelb167562ab" target="_blank" rel="noopener">khushi-patelb167562ab</a></div>
+    <div><small>GitHub</small><a href="https://github.com/patelkhushi150922-cpu/Portfolio" target="_blank" rel="noopener">patelkhushi150922-cpu</a></div>
+  </div>
+</div></section>
+
+<section class="alt" id="contact"><div class="wrap">
+  <div class="cta rv">
+    <h2>Let's work together</h2>
+    <p>Have a project in mind? Send me a message and I'll get back to you.</p>
+    <div class="actions">
+      <a class="btn btn-w" href="mailto:Patelkhushi150922@gmail.com">Send an email</a>
+      <a class="btn btn-l" href="https://linkedin.com/in/khushi-patelb167562ab" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
-</section>
+</div></section>
+</main>
 
-<div class="section-divider"></div>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <p class="section-label">Portfolio</p>
-  <h2 class="section-title">Selected Projects</h2>
-  <p class="section-sub">WordPress, Shopify, and AI-powered websites delivered for clients across industries.</p>
-
-  <div class="tabs">
-    <button class="tab active" onclick="filterProjects('all', this)">All</button>
-    <button class="tab" onclick="filterProjects('wordpress', this)">WordPress</button>
-    <button class="tab" onclick="filterProjects('shopify', this)">Shopify</button>
-    <button class="tab" onclick="filterProjects('ai', this)">AI-Powered</button>
-  </div>
-
-  <div class="projects-grid">
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">🎬</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">Threo Media</div>
-      <div class="project-desc">Modern media & creative agency website with bold layout and service showcasing.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://threo.media/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">threo.media</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">🏢</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">Nityam Global</div>
-      <div class="project-desc">Business website highlighting company services and corporate solutions with professional layout.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://nityamglobal.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">nityamglobal.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">🏠</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">The Hendrix Hou</div>
-      <div class="project-desc">Elegant real estate website presenting property listings with strong visual appeal.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://thehendrixhou.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">thehendrixhou.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">⚙️</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">Sparco Spanlite</div>
-      <div class="project-desc">Product-focused industrial website with clean sections and technical service presentation.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://sparcospanlite.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">sparcospanlite.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">🏡</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">Homes by Gagan</div>
-      <div class="project-desc">Property listing website with large visuals, featured homes, and lead generation sections.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://homesbygagan.ca/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">homesbygagan.ca</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">📦</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">Last Mile Hub</div>
-      <div class="project-desc">Modern logistics platform focused on fulfillment and marketplace integration.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://lastmilehub.in/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">lastmilehub.in</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">🪴</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">Sahyog Designway</div>
-      <div class="project-desc">Interior design studio website with portfolio showcase and service sections.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://sahyogdesignway.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">sahyogdesignway.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">🌐</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">Pelican (Felix Phase)</div>
-      <div class="project-desc">Clean business website with structured service offerings and modern UI.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://pelican.felixphase.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">pelican.felixphase.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">🌍</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">Mars Souq</div>
-      <div class="project-desc">Global trading website presenting business services and distribution solutions.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://marssouq.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">marssouq.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">💼</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">GetWorkz</div>
-      <div class="project-desc">Job platform website with clear service sections and professional layout.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://getworkz.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">getworkz.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="wordpress">
-      <div class="project-top">
-        <div class="project-icon">🍽️</div>
-        <span class="project-tag">WordPress</span>
-      </div>
-      <div class="project-title">Bite Delight</div>
-      <div class="project-desc">Food & restaurant website with appealing product sections and ordering focus.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://bitedelight.in/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">bitedelight.in</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="shopify">
-      <div class="project-top">
-        <div class="project-icon">👗</div>
-        <span class="project-tag">Shopify</span>
-      </div>
-      <div class="project-title">Khuvi</div>
-      <div class="project-desc">Modern Shopify store showcasing product collections, promotional banners, and clean product layouts.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://khuvi.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">khuvi.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="shopify">
-      <div class="project-top">
-        <div class="project-icon">🖼️</div>
-        <span class="project-tag">Shopify</span>
-      </div>
-      <div class="project-title">Najaranu</div>
-      <div class="project-desc">Premium Shopify website showcasing handcrafted art, gifting products, and decorative frames.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://najaranu.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">najaranu.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="shopify">
-      <div class="project-top">
-        <div class="project-icon">🐾</div>
-        <span class="project-tag">Shopify</span>
-      </div>
-      <div class="project-title">Pawganix</div>
-      <div class="project-desc">Pet care e-commerce store with product highlights, brand story, and clean shopping experience.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://pawganix.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">pawganix.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="shopify">
-      <div class="project-top">
-        <div class="project-icon">🥣</div>
-        <span class="project-tag">Shopify</span>
-      </div>
-      <div class="project-title">Kansyam</div>
-      <div class="project-desc">Minimal premium e-commerce website highlighting traditional bronze kitchenware collections.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://kansyam.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">kansyam.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="ai">
-      <div class="project-top">
-        <div class="project-icon">📊</div>
-        <span class="project-tag">AI-Powered</span>
-      </div>
-      <div class="project-title">Prosight Financial Group</div>
-      <div class="project-desc">Financial advisory website with AI-powered interactive features and professional layout.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://prosightfinancialgroup.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">prosightfinancialgroup.com</span>
-      </div>
-    </div>
-
-    <div class="project-card" data-type="ai">
-      <div class="project-top">
-        <div class="project-icon">🤝</div>
-        <span class="project-tag">AI-Powered</span>
-      </div>
-      <div class="project-title">Hire Workz</div>
-      <div class="project-desc">Smart hiring platform website integrating AI capabilities for recruitment services.</div>
-      <div class="project-footer">
-        <a class="project-link" href="https://hireworkz.com/" target="_blank" rel="noopener">Visit Site →</a>
-        <span class="project-domain">hireworkz.com</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ABOUT -->
-<section id="about">
-  <p class="section-label">About Me</p>
-  <h2 class="section-title">Creative Designer,<br>Problem Solver</h2>
-  <div class="about-wrapper">
-    <div class="about-text">
-      <p>I'm a <strong>web designer based in Ahmedabad, Gujarat</strong> with a passion for building websites that are both beautiful and functional. With 1+ year in WordPress and 8 months in Shopify, I've delivered 15+ projects across industries — from real estate and logistics to food and finance.</p>
-      <p>I specialize in turning ideas into polished digital experiences using <strong>Elementor, ACF, and custom HTML/CSS/PHP</strong>. I'm also experienced in building AI-powered websites using Claude by Anthropic — bringing intelligent interactivity to business clients.</p>
-      <p>Currently available for freelance projects. I love working with clients who care about design details as much as I do.</p>
-    </div>
-    <div class="about-info">
-      <div class="info-row">
-        <span class="info-label">Email</span>
-        <a href="mailto:Patelkhushi150922@gmail.com" class="info-value info-link">Patelkhushi150922@gmail.com</a>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Phone</span>
-        <span class="info-value">+91 63516 66594</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Location</span>
-        <span class="info-value">Ahmedabad, Gujarat, India</span>
-      </div>
-      <div class="info-row">
-        <span class="info-label">LinkedIn</span>
-        <a href="https://linkedin.com/in/khushi-patelb167562ab" class="info-value info-link" target="_blank">khushi-patelb167562ab</a>
-      </div>
-      <div class="info-row">
-        <span class="info-label">GitHub</span>
-        <a href="https://github.com/patelkhushi150922-cpu/Portfolio" class="info-value info-link" target="_blank">patelkhushi150922-cpu</a>
-      </div>
-      <div class="info-row">
-        <span class="info-label">Education</span>
-        <span class="info-value">Bachelor of Computer Applications (BCA)</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-box">
-    <h2>Let's build something great</h2>
-    <p>Have a project in mind? I'd love to hear about it.</p>
-    <div class="contact-links">
-      <a href="mailto:Patelkhushi150922@gmail.com" class="btn btn-primary">Send an Email →</a>
-      <a href="https://linkedin.com/in/khushi-patelb167562ab" class="btn btn-ghost" target="_blank">LinkedIn ↗</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 Khushi Patel · WordPress & Shopify Designer · Ahmedabad, India</p>
-  <div class="footer-right">
-    <a href="mailto:Patelkhushi150922@gmail.com">Email</a>
-    <a href="https://linkedin.com/in/khushi-patelb167562ab" target="_blank">LinkedIn</a>
-    <a href="https://github.com/patelkhushi150922-cpu/Portfolio" target="_blank">GitHub</a>
-  </div>
-</footer>
+<footer><div class="wrap">
+  <span>© 2026 Khushi Patel. Ahmedabad, India.</span>
+  <span><a href="mailto:Patelkhushi150922@gmail.com">Email</a> &nbsp;·&nbsp; <a href="https://linkedin.com/in/khushi-patelb167562ab" target="_blank" rel="noopener">LinkedIn</a> &nbsp;·&nbsp; <a href="https://github.com/patelkhushi150922-cpu/Portfolio" target="_blank" rel="noopener">GitHub</a></span>
+</div></footer>
 
 <script>
-function filterProjects(type, btn) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.project-card').forEach(card => {
-    if (type === 'all' || card.dataset.type === type) {
-      card.classList.remove('hidden');
-    } else {
-      card.classList.add('hidden');
-    }
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const svg=p=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const SK=[
+ [svg('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>'),'WordPress','Custom themes, plugins and complete site builds.'],
+ [svg('<path d="M6 7h12l-1 12H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/>'),'Shopify','Theme customization and product pages that convert.'],
+ [svg('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/>'),'Elementor Pro','Clean page building with dynamic content.'],
+ [svg('<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>'),'Advanced Custom Fields','Custom fields and post types for business data.'],
+ [svg('<path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/>'),'HTML, CSS and PHP','Clean code behind every custom layout.'],
+ [svg('<rect x="4" y="7" width="16" height="12" rx="3"/><path d="M12 7V4M9 13h.01M15 13h.01"/>'),'AI with Claude','Smart assistants and interactive features.'],
+ [svg('<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>'),'Responsive design','Mobile-first layouts for every screen.'],
+ [svg('<path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5L12 3z"/>'),'UI / UX design','Clear hierarchy and easy-to-use interfaces.']
+];
+const T={w:'WordPress',s:'Shopify',a:'AI-powered'};
+/* [type, name, description, domain, image path]
+   Projects without an image path (Kansyam) use an automatic live screenshot. */
+const P=[
+ ['w','Threo Media','Media and creative agency site with a bold layout and service showcase.','threo.media','images/threo.jpg'],
+ ['w','Nityam Global','Corporate site presenting company services in a professional layout.','nityamglobal.com','images/nityam.jpg'],
+ ['w','The Hendrix Hou','Elegant real estate site with property listings and strong visuals.','thehendrixhou.com','images/hendrix.jpg'],
+ ['w','Sparco Spanlite','Industrial product site with clean sections and technical detail.','sparcospanlite.com','images/sparco.jpg'],
+ ['w','Homes by Gagan','Property listings with large visuals, featured homes and lead forms.','homesbygagan.ca','images/gagan.jpg'],
+ ['w','Champagne Realty','Real estate website showcasing listings and services for buyers and sellers.','champagnerealty.ca','images/champagne.jpg'],
+ ['w','Last Mile Hub','Logistics platform focused on fulfillment and marketplace integration.','lastmilehub.in','images/lastmile.jpg'],
+ ['w','Sahyog Designway','Interior design studio with a portfolio showcase and services.','sahyogdesignway.com','images/sahyog.jpg'],
+ ['a','Thinkers Generation','AI-powered website with a clean, modern layout and interactive features.','thinkersgeneration.in','images/thinkers.jpg'],
+ ['w','Mars Souq','Global trading site presenting services and distribution.','marssouq.com','images/marssouq.jpg'],
+ ['w','GetWorkz','Job platform with clear service sections and a tidy layout.','getworkz.com','images/getworkz.jpg'],
+ ['w','Bite Delight','Restaurant site with appealing product sections built around ordering.','bitedelight.in','images/bitedelight.jpg'],
+ ['w','Technovate','Technology business website with a modern layout and clear service sections.','technovate.one','images/technovate.jpg'],
+ ['s','Khuvi','Shopify store with product collections, promo banners and clean product pages.','khuvi.com','images/khuvi.jpg'],
+ ['s','Najaranu','Premium store for handcrafted art, gifts and decorative frames.','najaranu.com','images/najaranu.jpg'],
+ ['s','Pawganix','Pet care store with product highlights and a brand story.','pawganix.com','images/pawganix.jpg'],
+ ['s','Kansyam','Minimal premium store for traditional bronze kitchenware.','kansyam.com'],
+ ['a','Prosight Financial Group','Financial advisory site with interactive AI features.','prosightfinancialgroup.com','images/prosight.jpg'],
+ ['a','Hire Workz','Hiring platform that uses AI in its recruitment services.','hireworkz.com','images/hireworkz.jpg']
+];
+/* live website screenshot (WordPress mShots) unless a custom image is given */
+const shot=p=>p[4]||`https://s.wordpress.com/mshots/v1/${encodeURIComponent('https://'+p[3]+'/')}?w=900&h=560`;
+
+$('#skills-grid').innerHTML=SK.map(s=>`<div class="skill rv"><div class="ic">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join('');
+const arrow=svg('<path d="M5 12h14M13 6l6 6-6 6"/>');
+const cnt=k=>k==='all'?P.length:P.filter(p=>p[0]===k).length;
+$('#tabs').innerHTML=[['all','All'],['w','WordPress'],['s','Shopify'],['a','AI-powered']]
+  .map((t,i)=>`<button class="tab${i?'':' on'}" data-t="${t[0]}">${t[1]}<em>${cnt(t[0])}</em></button>`).join('');
+$('#grid').innerHTML=P.map(p=>`<article class="card rv" data-t="${p[0]}">
+  <div class="thumb"><img src="${shot(p)}" alt="${p[1]} website preview" loading="lazy"><div class="fb">${p[1][0]}</div><div class="ov"><span>Visit live site</span></div></div>
+  <div class="cb">
+    <div class="top"><span class="pill ${p[0]==='w'?'':p[0]}">${T[p[0]]}</span><span class="dom">${p[3]}</span></div>
+    <h3>${p[1]}</h3><p>${p[2]}</p>
+    <span class="go">Visit site ${arrow}</span>
+  </div>
+  <a class="cover" href="https://${p[3]}/" target="_blank" rel="noopener" aria-label="Open ${p[1]}"></a>
+</article>`).join('');
+
+/* image loading states (mShots returns a placeholder first, so retry once) */
+$$('.thumb img').forEach(img=>{
+  const box=img.parentElement;let tries=0;
+  const done=()=>{if(img.naturalWidth>40)box.classList.add('ok')};
+  img.addEventListener('load',()=>{
+    if(img.naturalWidth<=40&&tries++<2){setTimeout(()=>{img.src=img.src.split('&r=')[0]+'&r='+Date.now()},3500);return}
+    done();
+  });
+  img.addEventListener('error',()=>box.classList.add('bad'));
+  if(img.complete)done();
+});
+
+/* hero floating previews */
+const hv=[[0,0,0,0,'images/khuvi2.jpg'],[0,0,0,0,'images/gagan.jpg'],[0,0,0,0,'images/prosight.jpg']];
+$('#vis').innerHTML=hv.map((p,i)=>`<div class="shot s${i+1}" data-d="${[18,-12,24][i]}"><div class="bar"><i></i><i></i><i></i></div><div class="im"><img src="${shot(p)}" alt="" onerror="this.remove()"></div></div>`).join('');
+
+$$('.tab').forEach(b=>b.addEventListener('click',()=>{
+  $$('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');let n=0;
+  $$('.card').forEach(c=>{
+    const ok=b.dataset.t==='all'||c.dataset.t===b.dataset.t;
+    c.classList.toggle('out',!ok);c.classList.remove('show');
+    if(ok){c.classList.add('in');c.style.animationDelay=(n++*45)+'ms';void c.offsetWidth;c.classList.add('show')}
+  });
+}));
+
+/* marquee */
+const W=['WordPress','Shopify','Elementor','ACF','PHP','HTML & CSS','Responsive design','UI / UX','AI integration'];
+$('#tr').innerHTML=[...W,...W,...W,...W].map(w=>`<span>${w}</span>`).join('');
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* nav + progress */
+addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  $('#prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  $('#nav').classList.toggle('sc',scrollY>30);
+},{passive:true});
+const secs=$$('main section[id]');
+const so=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting)$$('.nav ul a').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id));
+}),{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>so.observe(s));
+
+/* spotlight on cards */
+document.addEventListener('mousemove',e=>{
+  const c=e.target.closest&&e.target.closest('.card,.skill');
+  if(c){const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}
+});
+
+/* hero previews follow the mouse */
+if(!reduce){
+  const vis=$('#vis');
+  addEventListener('mousemove',e=>{
+    const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
+    $$('.shot').forEach(s=>{const d=+s.dataset.d;s.style.transform=`translate(${x*d}px,${y*d}px) rotateY(${x*8}deg) rotateX(${-y*8}deg)`});
   });
 }
-</script>
 
+/* scroll reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+}),{threshold:.1});
+$$('.rv').forEach((el,i)=>{
+  if(el.classList.contains('skill')||el.classList.contains('card'))el.style.transitionDelay=((i%3)*80)+'ms';
+  io.observe(el);
+});
+
+/* count up */
+$$('.mini b').forEach(b=>{
+  const end=+b.dataset.n,s=b.dataset.s||'';
+  if(reduce){b.textContent=end+s;return}
+  const t0=performance.now()+700;
+  (function k(t){const p=Math.max(0,Math.min((t-t0)/1200,1));b.textContent=Math.round(end*(1-Math.pow(1-p,3)))+s;if(p<1)requestAnimationFrame(k)})(performance.now());
+});
+</script>
 </body>
 </html>
